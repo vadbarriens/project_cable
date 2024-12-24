@@ -6,14 +6,18 @@ cable_list = [
         60, 60, 30, 30, 30, 30, 16, 16, 16, 16, 32, 32, 32, 33, 33, 33
 ]
 target = 250
-new_list = []
-while True:
-    random_index = randint(0, len(cable_list))
-    deleted_item = cable_list.pop(random_index - 1)
-    new_list.append(deleted_item)
-    if sum(new_list) > target:
-        cable_list.extend(new_list)
-        new_list.clear()
-    elif sum(new_list) == target:
-        print(new_list)
-        break
+
+def need_len_cable(cable_list, target):
+    new_list = []
+    while True:
+        random_index = randint(0, len(cable_list))
+        deleted_item = cable_list.pop(random_index - 1)
+        new_list.append(deleted_item)
+        if sum(new_list) > target:
+            cable_list.extend(new_list)
+            new_list.clear()
+        elif sum(new_list) == target:
+            return new_list
+
+
+print(need_len_cable(cable_list, target))
